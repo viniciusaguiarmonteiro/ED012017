@@ -1,0 +1,20 @@
+//Vinicius Aguiar Monteiro - 160072727//
+Algoritmo encontrar vetor
+
+entrada: int vetor;
+entrada: int i;
+entrada: int n;
+entrada: int z;
+
+for i<--0 até n-1 faça 
+	if vetor[i]<--z então
+	imprima ("i")
+		else
+		imprima ("Vetor não encontrado")
+	fim-if
+
+		fim-else
+
+fim-for
+
+fim programa
