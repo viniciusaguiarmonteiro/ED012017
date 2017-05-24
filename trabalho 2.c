@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 struct Node{
-	int num;
+	int nome;
 	struct Node *prox;
 };
 typedef struct Node node;
@@ -49,7 +49,6 @@ void inicia(node *LISTA)
 int menu(void)
 {
 	int opt;
-
 	printf("Escolha a opcao\n");
 	printf("0. Sair\n");
 	printf("1. Zerar agenda\n");
@@ -57,7 +56,8 @@ int menu(void)
 	printf("3. Adicionar contato\n");
 	printf("4. Alterar contato\n");
     printf("5. Procura contato\n");
-	printf("Opcao: "); scanf("%d", &opt);
+	printf("Opcao: ");
+	scanf("%d", &opt);
 
 	return opt;
 }
@@ -90,16 +90,6 @@ void opcao(node *LISTA, int op)
 		case 5:
 		    procura(LISTA);
 			break;
-/*
-		case 6:
-			break;
-
-		case 7:
-			break;
-
-		case 8:
-			break;
-*/
 		default:
 			printf("Comando invalido\n\n");
 	}
@@ -120,7 +110,7 @@ node *aloca()
 		printf("Sem memoria disponivel!\n");
 		exit(1);
 	}else{
-		printf("Novo elemento: "); scanf("%d", &novo->num);
+		printf("Novo elemento: "); scanf("%d", &novo->nome);
 		return novo;
 	}
 }
@@ -138,28 +128,37 @@ void insereInicio(node *LISTA)
 
 void exibe(node *LISTA)
 {
-	system("cls");
+system("cls");
 	if(vazia(LISTA)){
 		printf("Lista vazia!\n\n");
 		return ;
 	}
+/*void ordenar(lista **l) {
 
+    if(*l == NULL || (*l)->prox == NULL) return; //se for nulo(vazio), ou apenas 1 elemento
+    lista *aux = *l, *t;
+    char s[100]; //precisa de espacao suficiente para armazenar o nome
+
+    while(aux != NULL) {
+      t = aux->prox;
+      while(t != NULL) {
+        if(strcmp(aux->nome, t->nome) > 0) { //se vir depois
+            strcpy(s, aux->nome);
+            strcpy(aux->nome, t->nome);
+            strcpy(t->nome, s);
+        }
+        t = t->prox;
+      }
+      aux = aux->prox;
+    }
+}*/
 	node *tmp;
 	tmp = LISTA->prox;
 	printf("Lista:");
 	while( tmp != NULL){
-		printf("%5d", tmp->num);
+		printf("%5d", tmp->nome);
 		tmp = tmp->prox;
 	}
-	printf("\n        ");
-	int count;
-	for(count=0 ; count < tam ; count++)
-		printf("  ^  ");
-	printf("\nOrdem:");
-	for(count=0 ; count < tam ; count++)
-		printf("%5d", count+1);
-
-
 	printf("\n\n");
 }
 
@@ -179,29 +178,30 @@ void libera(node *LISTA)
 }
 void altera(node *LISTA)
 {
+system("cls");
 int y;
 	if(vazia(LISTA)){
 		printf("Lista vazia!\n\n");
 		return ;
 	}
-printf("Qual contato deseja alterar:\n");
-scanf("%d",&y);
-      while (LISTA!= NULL && LISTA->num != y)
-          LISTA = LISTA->prox;
-      if (LISTA->num == y){
-    printf("O contato a ser alterado e: %d\n",LISTA->num);
-    /*printf("Novo email:\n");
-    scanf("%s",LISTA->email);
-    printf("Novo telefone:\n");
-    scanf("%s",LISTA->telefone);*/
-    printf("contato alterado com sucesso!");
-      }
-      else
-    printf("contato nao encontrado!\n");
+    printf("Qual contato deseja alterar:");
+    scanf("%d",&y);
+        while (LISTA!= NULL && LISTA->nome != y)
+        LISTA = LISTA->prox;
+            if (LISTA->nome == y){
+            printf("O contato a ser alterado e: %d\n",LISTA->nome);
+            /*printf("Novo email:\n");
+            scanf("%s",LISTA->email);
+            printf("Novo telefone:\n");
+            scanf("%s",LISTA->telefone);*/
+            printf("contato alterado com sucesso!");
+            }
+            else printf("contato nao encontrado!\n");
 }
 
 void procura(node *LISTA)
 {
+system("cls");
 int y;
 	if(vazia(LISTA)){
 		printf("Lista vazia!\n\n");
@@ -209,12 +209,13 @@ int y;
 	}
 printf("Qual contato deseja procurar:\n");
 scanf("%d",&y);
-      while (LISTA!= NULL && LISTA->num != y)
+      while (LISTA!= NULL && LISTA->nome != y)
           LISTA = LISTA->prox;
-      if (LISTA->num == y)
-    printf("O contato: %d\n",LISTA->num);
+      if (LISTA->nome == y)
+    printf("O contato: %d\n",LISTA->nome);
     /*printf("Email: %s",LISTA->email);
     printf("Telefone: %s",LISTA->telefone);*/
       else
     printf("contato nao encontrado!\n");
+    return ;
 }
