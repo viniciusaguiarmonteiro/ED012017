@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct Node{
-	int nome;
+	char nome[100];
+	char email [100];
+	char telefone [20];
 	struct Node *prox;
 };
 typedef struct Node node;
@@ -49,7 +52,7 @@ void inicia(node *LISTA)
 int menu(void)
 {
 	int opt;
-	printf("Escolha a opcao\n");
+	printf("\nEscolha a opcao\n");
 	printf("0. Sair\n");
 	printf("1. Zerar agenda\n");
 	printf("2. Exibir agenda\n");
@@ -110,7 +113,19 @@ node *aloca()
 		printf("Sem memoria disponivel!\n");
 		exit(1);
 	}else{
-		printf("Novo elemento: "); scanf("%d", &novo->nome);
+	    setbuf(stdin, NULL);
+		printf("\nNovo contato: \n Nome: ");
+		scanf("%[^\n]s", &novo->nome);
+		setbuf(stdin, NULL);
+		printf("Email: ");
+		scanf("%[^\n]s", &novo->email);
+		setbuf(stdin, NULL);
+		printf("Telefone: ");
+		scanf("%[^\n]s", &novo->telefone);
+		setbuf(stdin, NULL);
+		printf("\nCADASTRO REALIZADO COM SUCESSO!\n");
+		system("pause");
+		system("cls");
 		return novo;
 	}
 }
@@ -154,12 +169,16 @@ system("cls");
 }*/
 	node *tmp;
 	tmp = LISTA->prox;
-	printf("Lista:");
+	printf("Lista de contatos: \n");
 	while( tmp != NULL){
-		printf("%5d", tmp->nome);
+		printf("%s\n", tmp->nome);
+		printf("%s\n", tmp->email);
+		printf("%s\n\n", tmp->telefone);
 		tmp = tmp->prox;
 	}
-	printf("\n\n");
+	system("pause");
+	system("cls");
+	printf("\n");
 }
 
 void libera(node *LISTA)
@@ -175,47 +194,58 @@ void libera(node *LISTA)
 			atual = proxNode;
 		}
 	}
+	printf("\n LISTA TELEFONICA ZERADA COM SUCESSO!\n");
+	system("pause");
+	system("cls");
 }
 void altera(node *LISTA)
 {
 system("cls");
-int y;
+char nome[100];
 	if(vazia(LISTA)){
 		printf("Lista vazia!\n\n");
 		return ;
 	}
-    printf("Qual contato deseja alterar:");
-    scanf("%d",&y);
-        while (LISTA!= NULL && LISTA->nome != y)
-        LISTA = LISTA->prox;
-            if (LISTA->nome == y){
-            printf("O contato a ser alterado e: %d\n",LISTA->nome);
-            /*printf("Novo email:\n");
-            scanf("%s",LISTA->email);
-            printf("Novo telefone:\n");
-            scanf("%s",LISTA->telefone);*/
-            printf("contato alterado com sucesso!");
-            }
-            else printf("contato nao encontrado!\n");
+	setbuf(stdin, NULL);
+    printf("Qual nome do contato deseja alterar:");
+    scanf("%[^\n]s",&nome);
+    setbuf(stdin, NULL);
+    while (LISTA!= NULL && strcmp(nome,LISTA->nome)!= 0){
+    LISTA = LISTA->prox;
+        if(strcmp(nome,LISTA->nome)== 0){
+        printf("O contato a ser alterado e: %s\n",LISTA->nome);
+        printf("Novo email: ");
+        scanf("%[^\n]s",LISTA->email);
+        setbuf(stdin, NULL);
+        printf("Novo telefone: ");
+        scanf("%[^\n]s",LISTA->telefone);
+        setbuf(stdin, NULL);
+        printf("\n\nContato alterado com sucesso!\n");
+        }
+            else
+            printf("\nContato nao encontrado!\n\n");
+            return ;
+    }
 }
-
 void procura(node *LISTA)
 {
 system("cls");
-int y;
+char nome[100];
 	if(vazia(LISTA)){
 		printf("Lista vazia!\n\n");
 		return ;
 	}
-printf("Qual contato deseja procurar:\n");
-scanf("%d",&y);
-      while (LISTA!= NULL && LISTA->nome != y)
-          LISTA = LISTA->prox;
-      if (LISTA->nome == y)
-    printf("O contato: %d\n",LISTA->nome);
-    /*printf("Email: %s",LISTA->email);
-    printf("Telefone: %s",LISTA->telefone);*/
-      else
-    printf("contato nao encontrado!\n");
-    return ;
+setbuf(stdin, NULL);
+printf("Qual o nome do contato deseja procurar: ");
+scanf("%[^\n]s",&nome);
+ setbuf(stdin, NULL);
+    while (LISTA!= NULL && strcmp(nome,LISTA->nome)!= 0){
+    LISTA = LISTA->prox;
+        if(strcmp(nome,LISTA->nome)== 0){
+        printf("\n\nCONTATO ENCONTRADO!\nNome: %s\n",LISTA->nome);
+        printf("Email: %s\n",LISTA->email);
+        printf("Telefone: %s\n",LISTA->telefone);
+      }else printf("\nContato nao encontrado!\n\n");
+      return ;
+      }
 }
