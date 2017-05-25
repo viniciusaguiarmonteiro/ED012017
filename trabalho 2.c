@@ -171,9 +171,9 @@ system("cls");
 	tmp = LISTA->prox;
 	printf("Lista de contatos: \n");
 	while( tmp != NULL){
-		printf("%s\n", tmp->nome);
-		printf("%s\n", tmp->email);
-		printf("%s\n\n", tmp->telefone);
+		printf("NOME: %s\n", tmp->nome);
+		printf("EMAIL: %s\n", tmp->email);
+		printf("TELEFONE: %s\n\n", tmp->telefone);
 		tmp = tmp->prox;
 	}
 	system("pause");
