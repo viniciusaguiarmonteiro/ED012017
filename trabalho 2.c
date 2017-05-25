@@ -140,19 +140,12 @@ void insereInicio(node *LISTA)
 
 	tam++;
 }
-
-void exibe(node *LISTA)
-{
-system("cls");
-	if(vazia(LISTA)){
-		printf("Lista vazia!\n\n");
-		return ;
-	}
-/*void ordenar(lista **l) {
-
-    if(*l == NULL || (*l)->prox == NULL) return; //se for nulo(vazio), ou apenas 1 elemento
-    lista *aux = *l, *t;
+void ordenar(node *LISTA) {
+    if(LISTA == NULL || LISTA->prox == NULL)
+    return; //se for nulo(vazio), ou apenas 1 elemento
     char s[100]; //precisa de espacao suficiente para armazenar o nome
+node *t;
+node *aux;
 
     while(aux != NULL) {
       t = aux->prox;
@@ -166,7 +159,14 @@ system("cls");
       }
       aux = aux->prox;
     }
-}*/
+}
+void exibe(node *LISTA)
+{
+system("cls");
+	if(vazia(LISTA)){
+		printf("Lista vazia!\n\n");
+		return ;
+	}
 	node *tmp;
 	tmp = LISTA->prox;
 	printf("Lista de contatos: \n");
