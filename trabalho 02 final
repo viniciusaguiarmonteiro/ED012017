@@ -7,6 +7,9 @@
 #else
 #define CLEAR "clear"
 #endif
+/*ALUNOS:
+VINICIUS AGUIAR MONTEIRO 160072727
+ERICK DE CASTRO */
 
 struct Node{
 	char nome[100];
