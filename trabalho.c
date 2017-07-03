@@ -21,8 +21,6 @@ struct Node{
 };
 typedef struct Node node;
 
-int tam;
-
 void inicia(node *LISTA);
 int menu(void);
 void opcao(node *LISTA, int op);
@@ -58,7 +56,6 @@ int main(void)
 void inicia(node *LISTA)
 {
 	LISTA->prox = NULL;
-	tam=0;
 }
 
 int menu(void)
@@ -153,7 +150,6 @@ void insereInicio(node *LISTA)
 	node *oldHead = LISTA->prox;
 	LISTA->prox = novo;
 	novo->prox = oldHead;
-	tam++;
 }
 void ordenar(node *LISTA) {
 node *aux1, *aux2;
