@@ -1,0 +1,19 @@
+Algoritmo encontrar elemento
+
+entrada: int vetor;
+entrada: int i;
+entrada: int j;
+entrada: int z;
+
+for i<--0 até j-1 faça 
+	se vetor[i]<--z então
+	imprima ("i")
+		else
+		imprima ("Vetor não encontrado")
+	fim-if
+
+		fim-else
+
+fim-for
+
+fim programa
